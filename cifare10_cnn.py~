@@ -125,12 +125,12 @@ def main(batch_size, learning_rate, activation):
        print('Saved trained model at %s ' % model_path)
 
 # Score trained model.
-       scores = model.evaluate(x_test, y_test, verbose=1)
-       print('Test loss:', scores[0])
-       print('Test accuracy:', scores[1])
+      scores = model.evaluate(x_test, y_test, verbose=1)
+      print('Test loss:', scores[0])
+      print('Test accuracy:', scores[1])
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = 'Change Settings of Model')
     parser.add_argument('-batch_size' , help ='Batch Size')
     parser.add_argument('learning_rate', help = 'Learning Rate')
-    args = parser.parse_args()
+    args.parser.parse_args()
     main(batch_size=args.batch_size, learning_rate=args.learning_rate)
