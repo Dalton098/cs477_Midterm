@@ -3,19 +3,25 @@ for rate in 0.1 0.01 0.001
 do 
     for batch_size in 32 64 128 
     do 
-         for func in LeakyReLU relu softmax
-         do  
-             py cifar10_cnn.py \
-                     --learning_rate ${rate} \
-                     --batch_size ${batch_size} \
-                     --activation ${func} > lr_${rate}_batch_${batch_size}_activation_${func}_log.log 
+        py cifar10_cnn_leaky.py \
+           --learning_rate ${rate} \
+           --batch_size ${batch_size} > lr_${rate}_batch_${batch_size}_activation_leaky_log.log
 
-             py format_output.py \
-                     --log lr_${rate}_batch_${batch_size}_activation_${func}_log.log \
-                     --batch ${batch_size} \
-                     --lr ${rate} \
-                     --func ${func} \
+        py cifar10_cnn_softmax.py \
+           --learning_rate ${rate} \
+           --batch_size ${batch_size} > lr_${rate}_batch_${batch_size}_activation_softmax_log.log
 
-         done
+        py cifar10_cnn_relu.py \
+           --learning_rate ${rate} \
+           --batch_size ${batch_size} > lr_${rate}_batch_${batch_size}_activation_relu_log.log     
+
+        py format_output.py \
+           --leaky_log lr_${rate}_batch_${batch_size}_activation_leaky_log.log \
+           --softmax_log lr_${rate}_batch_${batch_size}_activation_softmax_log.log \
+           --relu_log > lr_${rate}_batch_${batch_size}_activation_relu_log.log \
+           --batch ${batch_size} \
+           --lr ${rate} \
+           --func ${func} \
+
     done
 done
