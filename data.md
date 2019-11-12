@@ -3,3 +3,13 @@
 | **Batch Size**          | 32   | 64        | 128     |
 | **Activation Function** | ReLU | LeakyReLU | Softmax |
 
+
+
+
+
+
+
+
+
+
+

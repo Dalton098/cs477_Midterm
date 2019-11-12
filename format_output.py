@@ -8,6 +8,7 @@ def main(log, batch, lr, func):
    writer = pd.ExcelWriter('run_log_sheet.xlsx', engine='xlsxwriter')
    sheets = run_log_sheet.sheet_names
    
+   acc = ''
    log = open(log)
    for line in log:
        if 'Test accuracy' in line:
