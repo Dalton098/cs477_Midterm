@@ -12,7 +12,7 @@ import os
 import argparse
 
 
-def main(batch_size, learning_rate, activation):
+def main(batch_size, learning_rate):
     learning_rate = float(learning_rate)
     batch_size = int(batch_size)
     num_classes = 10
@@ -115,11 +115,11 @@ def main(batch_size, learning_rate, activation):
        model.fit_generator(datagen.flow(x_train, y_train, batch_size=batch_size), epochs=epochs, validation_data=(x_test, y_test), workers=4)
 
 # Save model and weights
-       if not os.path.isdir(save_dir):
-          os.makedirs(save_dir)
-          model_path = os.path.join(save_dir, model_name)
-          model.save(model_path)
-       print('Saved trained model at %s ' % model_path)
+      #  if not os.path.isdir(save_dir):
+      #     os.makedirs(save_dir)
+      #     model_path = os.path.join(save_dir, model_name)
+      #     model.save(model_path)
+      #  print('Saved trained model at %s ' % model_path)
 
 # Score trained model.
        scores = model.evaluate(x_test, y_test, verbose=1)

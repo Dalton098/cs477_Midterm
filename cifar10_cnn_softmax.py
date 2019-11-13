@@ -12,7 +12,7 @@ import os
 import argparse
 
 
-def main(batch_size, learning_rate, activation):
+def main(batch_size, learning_rate):
     learning_rate = float(learning_rate)
     batch_size = int(batch_size)
     num_classes = 10
