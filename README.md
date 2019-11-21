@@ -1,19 +1,6 @@
-Mike smells good
+# Midterm Project for CS477
 
-thanks - mike
+A CNN for the CIFAR-10 Classifcation problem. 
 
-
-
-git add -A
-
-git commit -m “<message here>”
-
-git push
-
-if you get declined for the push then git pull
-
-
-
-Leaky need to be like this (No single quotes around it like with relu)
-
-model.add(Activation(LeakyReLU(alpha=0.1)))
+Data was gathered from below:
+http://rodrigob.github.io/are_we_there_yet/build/classification_datasets_results.html
