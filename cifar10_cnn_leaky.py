@@ -8,6 +8,7 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten, LeakyReLU
 from keras.layers import Conv2D, MaxPooling2D
+from keras.utils import plot_model
 import os
 import argparse
 
@@ -16,7 +17,7 @@ def main(batch_size, learning_rate):
     learning_rate = float(learning_rate)
     batch_size = int(batch_size)
     num_classes = 10
-    epochs = 100
+    epochs = 1
     data_augmentation = True
     num_predictions = 20
     save_dir = os.path.join(os.getcwd(), 'saved_models')
@@ -120,16 +121,19 @@ def main(batch_size, learning_rate):
        model.fit_generator(datagen.flow(x_train, y_train, batch_size=batch_size), epochs=epochs, validation_data=(x_test, y_test), workers=4)
 
 # Save model and weights
-       if not os.path.isdir(save_dir):
-          os.makedirs(save_dir)
-          model_path = os.path.join(save_dir, model_name)
-          model.save(model_path)
-       print('Saved trained model at %s ' % model_path)
+      #  if not os.path.isdir(save_dir):
+      #     os.makedirs(save_dir)
+      #     model_path = os.path.join(save_dir, model_name)
+      #     model.save(model_path)
+      #  print('Saved trained model at %s ' % model_path)
 
 # Score trained model.
-       scores = model.evaluate(x_test, y_test, verbose=1)
-       print('Test loss:', scores[0])
-       print('Test accuracy:', scores[1])
+      #  scores = model.evaluate(x_test, y_test, verbose=1)
+      #  print('Test loss:', scores[0])
+      #  print('Test accuracy:', scores[1])
+
+       plot_model(model, to_file='model.png')
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description = 'Change Settings of Model')
     parser.add_argument('--batch_size' , help ='Batch Size')
